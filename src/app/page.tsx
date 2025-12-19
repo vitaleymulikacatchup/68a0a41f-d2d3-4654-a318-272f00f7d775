@@ -40,7 +40,7 @@ export default function LandingPage() {
         />
       </div>
 
-      <div id="hero" data-section="hero">
+      <div id="hero" data-section="hero" className="relative">
         <HeroLogoBillboardSplit
           logoText="Eat for Life"
           description="Experience culinary excellence where every dish tells a story of tradition, passion, and exceptional ingredients. Discover a dining experience that celebrates the art of fine cuisine."
@@ -53,6 +53,13 @@ export default function LandingPage() {
           imageAlt="Fine dining restaurant interior with elegant ambiance"
           frameStyle="card"
         />
+        <div className="absolute top-1/2 left-8 md:left-16 -translate-y-1/2 z-50 flex items-center gap-3 px-5 py-3 bg-[var(--card)] text-[var(--foreground)] rounded-full shadow-xl border border-[var(--border)] backdrop-blur-md pointer-events-auto hover:shadow-2xl transition-shadow duration-300">
+          <Phone className="w-5 h-5 text-[var(--primary-cta)] flex-shrink-0" />
+          <button className="font-semibold text-sm hover:text-[var(--primary-cta)] transition-colors duration-200 cursor-pointer bg-none border-none p-0" aria-label="Call restaurant">
+            +380905992233
+          </button>
+          <span className="text-xs text-[var(--foreground)] opacity-75 ml-1 hidden sm:inline">Call for reserve a table</span>
+        </div>
       </div>
 
       <div id="about" data-section="about">
