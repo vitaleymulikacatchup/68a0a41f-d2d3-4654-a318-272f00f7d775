@@ -8,9 +8,19 @@ import ProductCardFour from '@/components/sections/product/ProductCardFour';
 import TestimonialCardTen from '@/components/sections/testimonial/TestimonialCardTen';
 import ContactFaq from '@/components/sections/contact/ContactFaq';
 import FooterSocial from '@/components/sections/footer/FooterSocial';
-import { Phone, Instagram, Facebook } from 'lucide-react';
+import { Phone, Instagram, Facebook, ChevronDown } from 'lucide-react';
+import { useState } from 'react';
 
 export default function LandingPage() {
+  const [isPhoneDropdownOpen, setIsPhoneDropdownOpen] = useState(false);
+  const [selectedPhone, setSelectedPhone] = useState('+380905992233');
+
+  const phoneNumbers = [
+    '+380905992233',
+    '+380906662233',
+    '+380907772233'
+  ];
+
   return (
     <ThemeProvider
       defaultButtonVariant="shift-hover"
@@ -53,11 +63,38 @@ export default function LandingPage() {
           imageAlt="Fine dining restaurant interior with elegant ambiance"
           frameStyle="card"
         />
-        <div className="absolute top-1/2 left-8 md:left-16 -translate-y-1/2 z-50 flex items-center gap-3 px-5 py-3 bg-[var(--card)] text-[var(--foreground)] rounded-full shadow-xl border border-[var(--border)] backdrop-blur-md pointer-events-auto hover:shadow-2xl transition-shadow duration-300">
+        <div className="fixed bottom-8 right-8 z-50 flex items-center gap-3 px-5 py-3 bg-[var(--card)] text-[var(--foreground)] rounded-full shadow-xl border border-[var(--border)] backdrop-blur-md pointer-events-auto hover:shadow-2xl transition-shadow duration-300">
           <Phone className="w-5 h-5 text-[var(--primary-cta)] flex-shrink-0" />
-          <button className="font-semibold text-sm hover:text-[var(--primary-cta)] transition-colors duration-200 cursor-pointer bg-none border-none p-0" aria-label="Call restaurant">
-            +380905992233
-          </button>
+          <div className="relative">
+            <button
+              onClick={() => setIsPhoneDropdownOpen(!isPhoneDropdownOpen)}
+              className="font-semibold text-sm hover:text-[var(--primary-cta)] transition-colors duration-200 cursor-pointer bg-none border-none p-0 flex items-center gap-2"
+              aria-label="Call restaurant"
+              aria-haspopup="listbox"
+              aria-expanded={isPhoneDropdownOpen}
+            >
+              {selectedPhone}
+              <ChevronDown className="w-4 h-4 transition-transform duration-200" style={{
+                transform: isPhoneDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)'
+              }} />
+            </button>
+            {isPhoneDropdownOpen && (
+              <div className="absolute top-full left-0 mt-2 bg-[var(--card)] border border-[var(--border)] rounded-lg shadow-lg overflow-hidden min-w-max z-10">
+                {phoneNumbers.map((phone) => (
+                  <button
+                    key={phone}
+                    onClick={() => {
+                      setSelectedPhone(phone);
+                      setIsPhoneDropdownOpen(false);
+                    }}
+                    className="block w-full text-left px-4 py-2 hover:bg-[var(--background-accent)] text-sm text-[var(--foreground)] transition-colors duration-150"
+                  >
+                    {phone}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
           <span className="text-xs text-[var(--foreground)] opacity-75 ml-1 hidden sm:inline">Call for reserve a table</span>
         </div>
       </div>
