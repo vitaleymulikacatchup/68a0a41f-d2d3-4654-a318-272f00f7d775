@@ -63,7 +63,7 @@ export default function LandingPage() {
           imageAlt="Fine dining restaurant interior with elegant ambiance"
           frameStyle="card"
         />
-        <div className="absolute top-10 right-10 z-50 flex items-center gap-3 px-5 py-3 bg-[var(--card)] text-[var(--foreground)] rounded-full shadow-xl border border-[var(--border)] backdrop-blur-md pointer-events-auto hover:shadow-2xl transition-shadow duration-300">
+        <div className="absolute bottom-10 right-10 z-50 flex items-center gap-3 px-5 py-3 bg-[var(--card)] text-[var(--foreground)] rounded-full shadow-xl border border-[var(--border)] backdrop-blur-md pointer-events-auto hover:shadow-2xl transition-shadow duration-300">
           <Phone className="w-5 h-5 text-[var(--primary-cta)] flex-shrink-0" />
           <div className="relative">
             <button
