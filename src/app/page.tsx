@@ -95,7 +95,7 @@ export default function LandingPage() {
               </div>
             )}
           </div>
-          <span className="text-xs text-[var(--foreground)] opacity-75 ml-1 hidden sm:inline">Call for reserve a table</span>
+          <span className="text-xs text-[var(--foreground)] opacity-75 ml-1 hidden sm:inline">Call for fast reserve a table</span>
         </div>
       </div>
 
